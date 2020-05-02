@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+var root = document.getElementById('root');
+root.setAttribute("style", "background: #ADD8E6;");
+root.setAttribute("style", "margin: 0;");
+
 ReactDOM.render(
   <React.StrictMode>
     <App/>
