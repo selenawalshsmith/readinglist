@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+import Nav from "./components/layout/Nav";
+import BookGrid from "./components/grid/BookGrid"
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      
-      </header>
+      <Nav/>
+      <BookGrid/>
     </div>
   );
 }
