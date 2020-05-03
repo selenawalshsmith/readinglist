@@ -53,7 +53,9 @@ class App extends Component {
     return (
       <div className="App">
         <Nav/>
-              <BookGrid myBooks={this.state.myBooks}/>
+              <BookGrid cols={3} myBooks={this.state.myBooks} key={this.state.myBooks.id}>
+                  <BookCard myBooks={this.state.myBooks}/>
+              </BookGrid>
       </div>
     )
   }

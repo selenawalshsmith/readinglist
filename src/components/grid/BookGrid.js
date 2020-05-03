@@ -1,43 +1,41 @@
 import React, {Component} from 'react';
-//import BookCard from "./BookCard"
+import BookCard from "./BookCard"
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import {chunk} from 'lodash';
+import PropTypes from 'prop-types';
 //import '../../bootstrap/css/bootstrap.min.css'
 import './card.css';
-
+//chunk... USE CHUNK TO CREATE DA ROWS...
 //this.props.myBooks = the array of myBooks in the App.js State
-
-class BookGrid extends Component {
-
-  render() {
-    //const { id, title, author, img} = this.props.myBooks;
-    //return this.props.myBooks.map((book) => do something with book)
-    //return ()=> {for(i=0; i <= this.props.myBooks.length; i++){}}
-      return (
-        <Grid fluid style={gridStyle} >
-          <Row>
-            <Col lg={4} md={3}>
-              <div className="card">
-              <p>hello</p>
-              </div>
-            </Col>
-            <Col lg={4} md={3}>
-              <div className="card">
-              <p>hello</p>
-              </div>
-            </Col>
-            <Col lg={4} md={3}>
-              <div className="card">
-                <p>hello</p>
-              </div>
-            </Col>
-          </Row>
-        </Grid>
-      )
-  }
+type flexColumns = {
+  cols: 1 | 2 | 3 | 4 | 6 | 12
 }
+/*class BookGrid extends Component {
+  render() */
+  const BookGrid: React.FC<flexColumns> = ({ cols, children}) =>
+  {
+    //const numOfColumns = 3;
+    const rows = chunk(React.Children.toArray(children), cols);
+    return (
+      <Grid fluid style={gridStyle}>
+      {rows.map((cols, i) =>(
+        <Row key={i}>
+          {cols.map((col, i) => (
+            <Col lg={4} md={3} key={i}>
+              {col}
+            </Col>
+          ))}
+        </Row>
+      ))}
+      </Grid>
+    )
+  }
 
-
-
+/*
+  this.propTypes = {
+    myBooks: PropTypes.array.isRequired
+  }
+*/
 
 const gridStyle = {
   alignItems: 'center',
