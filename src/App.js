@@ -54,7 +54,9 @@ class App extends Component {
       <div className="App">
         <Nav/>
               <BookGrid cols={3} myBooks={this.state.myBooks} key={this.state.myBooks.id}>
-                  <BookCard myBooks={this.state.myBooks}/>
+                {this.state.myBooks.map((book,i)=> (
+                  <BookCard myBooks={book} key={i}/>
+                ))}
               </BookGrid>
       </div>
     )

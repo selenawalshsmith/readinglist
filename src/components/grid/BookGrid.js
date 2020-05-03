@@ -21,7 +21,7 @@ type flexColumns = {
       {rows.map((cols, i) =>(
         <Row key={i}>
           {cols.map((col, i) => (
-            <Col lg={4} md={3} key={i}>
+            <Col sm={12} md={4} key={i}>
               {col}
             </Col>
           ))}
@@ -44,6 +44,7 @@ const gridStyle = {
   minWidth: '100%',
   padding: '40px'
 }
+
 
 
 

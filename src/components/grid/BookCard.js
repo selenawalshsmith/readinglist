@@ -12,12 +12,20 @@ class Bookcard extends Component {
         </div>
 
       )
-    */
+
     return this.props.myBooks.map((book) => (
       <div className="card">
         <h1>{book.title}</h1>
       </div>
-    ))
+        ))
+      */
+      const {id, title, author, img} = this.props.myBooks;
+      return(
+        <div className="card">
+          <h1>{title}</h1>
+
+        </div>
+      )
   }
 }
 /*
@@ -30,6 +38,6 @@ const cardStyle ={
 }
 */
 Bookcard.propTypes = {
-  myBooks: PropTypes.array.isRequired
+  myBooks: PropTypes.object.isRequired
 }
 export default Bookcard;
