@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import Nav from "./components/layout/Nav";
-import BookGrid from "./components/grid/BookGrid"
-import BookCard from "./components/grid/BookCard"
+import BookGrid from "./components/grid/BookGrid";
+import BookCard from "./components/grid/BookCard";
+import Books from "./components/grid/Books";
 import './App.css';
 /*
 function App() {
@@ -15,7 +17,8 @@ function App() {
 */
 class App extends Component {
   state = {
-    myBooks: [
+    myBooks: []
+      /*
       {
         id: 1,
         title: "Be Here Now",
@@ -46,21 +49,49 @@ class App extends Component {
         author: "Alan Watts",
         img: '/img/TheBook.png'
       }
-    ]
+      */
+  }
+  componentDidMount(){
+    var key='AIzaSyAUiO51_Ibao2w1ThiUOG1RSufiHmmQ_jE';
+    axios.get('https://www.googleapis.com/books/v1/users/105309221066047026022/bookshelves/1001/volumes')
+      .then((response) => {
+        //var bookList = JSON.stringify(response.data);
+      //  bookList = JSON.parse(bookList);
+        this.setState({myBooks: response.data});
+      })
+      .catch(function (error){
+        console.log(error);
+      })
   }
   render(){
-    console.log(this.state.myBooks);
+    //var myState= this.state.myBooks;
+    //let x = this.state.myBooks["items"];
+    const bookItems = this.state.myBooks.items;
+  //  const bookInfo = this.state.myBooks.items["volumeInfo"];
     return (
       <div className="App">
         <Nav/>
-              <BookGrid cols={3} myBooks={this.state.myBooks} key={this.state.myBooks.id}>
-                {this.state.myBooks.map((book,i)=> (
-                  <BookCard myBooks={book} key={i}/>
-                ))}
-              </BookGrid>
+
+              <Books myBooks={this.state.myBooks}/>
+              <ul>
+                {console.dir(this.state.myBooks.items)}
+              </ul>
       </div>
     )
   }
+}
+export const flattenObject = (obj) => {
+  const flattened = {}
+
+  Object.keys(obj).forEach((key) => {
+    if (typeof obj[key] === 'object' && obj[key] !== null) {
+      Object.assign(flattened, flattenObject(obj[key]))
+    } else {
+      flattened[key] = obj[key]
+    }
+  })
+
+  return flattened
 }
 
 export default App;

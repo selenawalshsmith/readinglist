@@ -20,6 +20,7 @@ class Bookcard extends Component {
         ))
       */
       const {id, title, author, img} = this.props.myBooks;
+      //const title = this.props.myBooks
       //document.getElementById("x").src = img;
       //var book_image = img;
       return(
