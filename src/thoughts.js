@@ -152,3 +152,43 @@ export default Books;
 <BookGrid cols={3} myBooks={this.state.myBooks} key={this.state.myBooks.id}>
 
 </BookGrid>
+
+
+
+
+
+const bookArray=[];
+for (var key in this.state.myBooks){
+  if (this.state.myBooks.hasOwnProperty(key)){
+    bookArray.push(this.state.myBooks[key]);
+  }
+}
+for(var i =0; i < bookArray.length; i++){
+  console.log(bookArray[i]);
+}
+console.log("items:");
+
+console.log(bookArray[2]); //it's an array but it wont recognize map or other things
+
+
+
+
+
+
+
+
+
+
+
+componentDidMount(){
+  var key='AIzaSyAUiO51_Ibao2w1ThiUOG1RSufiHmmQ_jE';
+  axios.get('https://www.googleapis.com/books/v1/users/105309221066047026022/bookshelves/1001/volumes')
+    .then((response) => {
+      var bookList = JSON.stringify(response.data); //turns json to a string
+      bookList = JSON.parse(bookList); //turns json string into a js object?
+      this.setState({myBooks: bookList});
+    })
+    .catch(function (error){
+      console.log(error);
+    })
+}

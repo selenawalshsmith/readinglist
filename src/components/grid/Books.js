@@ -4,11 +4,8 @@ import App from '../../App';
 import PropTypes from 'prop-types';
 import {size} from 'lodash';
 import './card.css';
-/*
-var bookList = JSON.stringify(App.state.myBooks);
-bookList = JSON.parse(bookList);
-var iterator = bookList["items"].values();
-*/
+
+
 class Books extends Component {
   //const bookList = this.props.myBooks.items;
   render() {
