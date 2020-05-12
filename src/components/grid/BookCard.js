@@ -19,16 +19,16 @@ class Bookcard extends Component {
       </div>
         ))
       */
-      const {id, title, author, img} = this.props.myBooks;
+      //const {id, title, author, img} = this.props.myBooks;
       //const title = this.props.myBooks
       //document.getElementById("x").src = img;
       //var book_image = img;
+      //const {id, title} = this.props.bookItem;
       return(
         <div className="card">
-          <h1 className="card-title">{title}</h1>
-          <p>By {author}</p>
-          <img src={img}></img>
-
+              <img src={this.props.img}/>
+              <h1 className="card-title">{this.props.title}</h1>
+              <p>By {this.props.author}</p>
         </div>
       )
   }
@@ -42,7 +42,9 @@ const cardStyle ={
   margin: '30px',
 }
 */
+/*
 Bookcard.propTypes = {
   myBooks: PropTypes.object.isRequired
 }
+*/
 export default Bookcard;
