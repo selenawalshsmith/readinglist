@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import './card.css';
 
 
@@ -26,25 +27,27 @@ class Bookcard extends Component {
       //const {id, title} = this.props.bookItem;
       return(
         <div className="card">
-              <img src={this.props.img}/>
-              <h1 className="card-title">{this.props.title}</h1>
-              <p>By {this.props.author}</p>
+          <div className="container">
+            <Grid>
+              <Row>
+                <Col>
+                  <img src={this.props.img}/>
+                </Col>
+                <Col>
+                  <div className="title-author-div">
+                    <h1 className="card-title">{this.props.title}</h1>
+                    <p>By {this.props.author}</p>
+                  </div>
+                </Col>
+              </Row>
+            </Grid>
+          </div>
+          <div className="description">
+            <p>{this.props.description}</p>
+          </div>
         </div>
       )
   }
 }
-/*
-const cardStyle ={
-  background: "#FF0000",
-  color: '#fff',
-  padding: '10px',
-  fontSize: '25px',
-  margin: '30px',
-}
-*/
-/*
-Bookcard.propTypes = {
-  myBooks: PropTypes.object.isRequired
-}
-*/
+
 export default Bookcard;

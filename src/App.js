@@ -4,6 +4,7 @@ import Nav from "./components/layout/Nav";
 import BookGrid from "./components/grid/BookGrid";
 import BookCard from "./components/grid/BookCard";
 import Books from "./components/grid/Books";
+import Search from './components/Search'
 import './App.css';
 
 class App extends Component {
@@ -41,6 +42,7 @@ class App extends Component {
     return (
       <div className="App">
         <Nav/>
+          <Search/>
           <BookGrid cols={3} myBooks={this.state.myBooks}>
             <Books myBooks={this.state.myBooks}/>
           </BookGrid>

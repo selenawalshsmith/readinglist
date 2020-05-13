@@ -10,7 +10,7 @@ class Books extends Component {
 
   render() {
     return this.props.myBooks.map((bookItem, i) => (
-      <BookCard title={bookItem.title} id={bookItem.id} author={bookItem.author} img={bookItem.img} key={i}/>
+      <BookCard title={bookItem.title} id={bookItem.id} author={bookItem.author} img={bookItem.img} description={bookItem.description} key={i}/>
     ));
   }
 }
