@@ -44,7 +44,10 @@ class App extends Component {
         <Nav/>
           <Search/>
           <BookGrid cols={3} myBooks={this.state.myBooks}>
-            <Books myBooks={this.state.myBooks}/>
+          {
+            this.state.myBooks.map((bookItem, i) => (
+              <BookCard title={bookItem.title} id={bookItem.id} author={bookItem.author} img={bookItem.img} description={bookItem.description} key={i}/>
+            ))}
           </BookGrid>
       </div>
     )
