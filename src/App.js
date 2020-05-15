@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, KeyboardEvent} from 'react';
 import axios from 'axios';
 import Nav from "./components/layout/Nav";
 import BookGrid from "./components/grid/BookGrid";
@@ -9,8 +9,10 @@ import './App.css';
 
 class App extends Component {
   state = {
-    myBooks: []
+    myBooks: [],
+    searchQuery: "empty"
   }
+
   componentDidMount(){
     var key='AIzaSyAUiO51_Ibao2w1ThiUOG1RSufiHmmQ_jE';
     axios.get('https://www.googleapis.com/books/v1/users/105309221066047026022/bookshelves/1001/volumes')
@@ -33,17 +35,28 @@ class App extends Component {
         console.log(error);
       })
   }
+  //document.getElementbyId
+  performSearch = (event: KeyboardEvent<HTMLInputElement>, searchQuery ) => {
+    if(event.key === 'Enter'){
+      /*
+      axios.get('https://www.googleapis.com/books/v1/volumes?q='+search)
+        .then((response) => {
+        }
+        */
+        console.log(searchQuery);
+    }
+  }
   render(){
     //console.dir(this.state.myBooks);
 
 
-    this.state.myBooks.map((bookItem) => console.log(bookItem.img));
+  //  this.state.myBooks.map((bookItem) => console.log(bookItem.img));
 
     return (
       <div className="App">
         <Nav/>
-          <Search/>
-          <BookGrid cols={3} myBooks={this.state.myBooks}>
+          <Search performSearch={this.performSearch} searchQuery={this.state.searchQuery}/>
+          <BookGrid cols={3} >
           {
             this.state.myBooks.map((bookItem, i) => (
               <BookCard title={bookItem.title} id={bookItem.id} author={bookItem.author} img={bookItem.img} description={bookItem.description} key={i}/>
