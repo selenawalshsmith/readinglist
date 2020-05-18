@@ -221,3 +221,5 @@ onChange={this.props.searchQuery = this.searchQuery}
 onKeyDown={(e)=> this.props.performSearch(e, this.searchQuery)}
 
 <Link to={`/Book/${this.props.id}`}>
+
+  <Route path='/Book/${this.props.id}' component={Book}/>
