@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import BookCard from './BookCard';
-import App from '../../App';
 import PropTypes from 'prop-types';
-import {size} from 'lodash';
 import './card.css';
 
 

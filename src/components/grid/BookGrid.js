@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
-import BookCard from "./BookCard"
+import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import {chunk} from 'lodash';
-import PropTypes from 'prop-types';
+
 //import '../../bootstrap/css/bootstrap.min.css'
 import './card.css';
 //chunk... USE CHUNK TO CREATE DA ROWS...

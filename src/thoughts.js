@@ -171,7 +171,32 @@ console.log("items:");
 console.log(bookArray[2]); //it's an array but it wont recognize map or other things
 
 
-
+<Grid>
+  <Row>
+    <Col>
+       <h1>hello</h1>
+    </Col>
+    <Col>
+      <h1>hello</h1>
+    </Col>
+  </Row>
+  <Row>
+    <Col>
+      <h1>hello</h1>
+    </Col>
+    <Col>
+      <h1>hello</h1>
+    </Col>
+  </Row>
+  <Row>
+    <Col>
+      <h1>hello</h1>
+    </Col>
+    <Col>
+      <h1>hello</h1>
+    </Col>
+  </Row>
+</Grid>
 
 
 
@@ -194,3 +219,5 @@ componentDidMount(){
 }
 onChange={this.props.searchQuery = this.searchQuery}
 onKeyDown={(e)=> this.props.performSearch(e, this.searchQuery)}
+
+<Link to={`/Book/${this.props.id}`}>

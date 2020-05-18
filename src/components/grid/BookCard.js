@@ -1,30 +1,12 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Link } from 'react-router-dom';
 import './card.css';
 
 
 class Bookcard extends Component {
   render() {
-    /*
-      return (
-        <div className="card">
-          <h1>{this.props.myBooks.title}</h1>
-        </div>
-
-      )
-
-    return this.props.myBooks.map((book) => (
-      <div className="card">
-        <h1>{book.title}</h1>
-      </div>
-        ))
-      */
       //const {id, title, author, img} = this.props.myBooks;
-      //const title = this.props.myBooks
-      //document.getElementById("x").src = img;
-      //var book_image = img;
-      //const {id, title} = this.props.bookItem;
       return(
         <div className="card">
           <div className="container">
@@ -35,15 +17,18 @@ class Bookcard extends Component {
                 </Col>
                 <Col>
                   <div className="title-author-div">
-                    <h1 className="card-title">{this.props.title}</h1>
+                    <h2 className="card-title">{this.props.title}</h2>
                     <p>By {this.props.author}</p>
                   </div>
                 </Col>
               </Row>
             </Grid>
           </div>
-          <div className="description">
-            <p>{this.props.description}</p>
+          <div className="saveButtonContainer">
+            <button className="saveButton"><p>Add to list</p></button>
+            <Link to={`/books/${this.props.id}`}>
+              <button className="saveButton"><p>Description</p></button>
+            </Link>
           </div>
         </div>
       )
