@@ -13,7 +13,7 @@ class App extends Component {
           <Nav/>
           <Switch>
           <Route path="/" exact component={Home}/>
-          <Route path="/books" component={Book}/>
+          <Route path="/book" component={Book}/>
           </Switch>
         </div>
       </Router>

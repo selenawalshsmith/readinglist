@@ -26,7 +26,7 @@ class Bookcard extends Component {
           </div>
           <div className="saveButtonContainer">
             <button className="saveButton"><p>Add to list</p></button>
-            <Link to={`/books/${this.props.id}`}>
+            <Link to={`/book/${this.props.id}`}>
               <button className="saveButton"><p>Description</p></button>
             </Link>
           </div>
