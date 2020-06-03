@@ -26,7 +26,8 @@ User.findOne({ email: req.body.email }).then(user => {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        bookList: []
       });
 // Hash password before saving in database
       bcrypt.genSalt(10, (err, salt) => {
@@ -92,4 +93,20 @@ const email = req.body.email;
     });
   });
 });
+
+router.post("/addBook", (req, res) => {
+  User.findOne({ name: req.body.name }).then(user => {
+      if (!user) {
+        return res.status(400);
+      } else {
+        //Add the book id to the user's array bookList
+        user.bookList.push(req.body.bookId);
+        user.save();
+        //return json of the bookList
+        //return res.status(200).json({success: {booklist: user.bookList}});
+        //or just retun success status
+        return res.status(200).json({success: "Book Added"});
+      }
+    });
+})
 module.exports = router;

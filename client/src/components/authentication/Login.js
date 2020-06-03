@@ -33,8 +33,8 @@ class Login extends Component{
     delete axios.defaults.headers.common["Authorization"];
   }
 };
-  setCurrentUser(){
-
+  setCurrentUser = (name, history) => {
+    history.push("/user/"+name);
   }
   loginUser = (userData, history) => {
     axios
@@ -50,9 +50,10 @@ class Login extends Component{
        //Decode token to get user data
      const decoded = jwt_decode(token);
        //Set current user
-       console.log(decoded);
+       //console.log(decoded.name);
+       this.setCurrentUser(decoded.name, history);
       //dispatch(setCurrentUser(decoded));
-      history.push("/user");
+      //history.push("/user");
     })
     .catch(err => {
       //console.dir(err.response.data);
