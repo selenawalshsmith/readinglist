@@ -5,11 +5,15 @@ import { Link } from 'react-router-dom';
 
 function Nav(){
   return (
-    <Link to='/'>
+    <div>
       <header style={headerStyle}>
-        <h1>Reading List</h1>
+        <Link to='/'>
+          <h1>Reading List</h1>
+        </Link>
+        <Link to='/register'><button style={buttonStyle}>Register</button></Link>
+        <button style={buttonStyle}>Login</button>
       </header>
-    </Link>
+    </div>
   )
 }
 const headerStyle ={
@@ -19,5 +23,8 @@ const headerStyle ={
   padding: '10px',
   fontSize: '25px',
   width: '100%'
+}
+const buttonStyle ={
+
 }
 export default Nav;
