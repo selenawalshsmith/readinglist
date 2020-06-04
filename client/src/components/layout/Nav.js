@@ -11,7 +11,7 @@ function Nav(){
           <h1>Reading List</h1>
         </Link>
         <Link to='/register'><button style={buttonStyle}>Register</button></Link>
-        <button style={buttonStyle}>Login</button>
+        <Link to='/login'><button style={buttonStyle}>Login</button></Link>
       </header>
     </div>
   )

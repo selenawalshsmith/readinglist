@@ -9,51 +9,57 @@ class Home extends Component{
     myBooks: [],
     searchQuery: "empty"
   }
-  componentDidMount(){
-    axios.get('https://www.googleapis.com/books/v1/users/105309221066047026022/bookshelves/1001/volumes')
-      .then((response) => {
-        const bookList = [];
-        for(var i=0; i < response.data.items.length; i++){
-          //let imageUrl = URL.createObjectURL(response.data.items[i].volumeInfo.previewLink);
-          const bookItem = {
-            id: response.data.items[i].id,
-            title: response.data.items[i].volumeInfo.title,
-            author: response.data.items[i].volumeInfo.authors,
-            description: response.data.items[i].volumeInfo.description,
-            img: response.data.items[i].volumeInfo.imageLinks.thumbnail
-          }
-          bookList.push(bookItem);
+  getInitialBookList = () => {
+  fetch('https://www.googleapis.com/books/v1/users/105309221066047026022/bookshelves/1001/volumes')
+    .then(response => response.json())
+    .then((responsedata) => {
+    //  console.log(responsedata.items);
+      const bookList = [];
+      for(var i=0; i < responsedata.items.length; i++){
+        const bookItem = {
+          id: responsedata.items[i].id,
+          title: responsedata.items[i].volumeInfo.title,
+          author: responsedata.items[i].volumeInfo.authors,
+          description: responsedata.items[i].volumeInfo.description,
+          img: responsedata.items[i].volumeInfo.imageLinks.thumbnail
         }
-        this.setState({myBooks: bookList});
-      })
-      .catch(function (error){
-        console.log(error);
-      })
+        bookList.push(bookItem);
+      }
+      //console.log(bookList);
+      this.setState({myBooks: bookList});
+    }).catch(function (error){
+      console.log(error);
+    //console.log("fail");
+  });
+ };
+ componentDidMount(){
+    this.getInitialBookList();
   }
+
   //document.getElementbyId
   performSearch = (event: KeyboardEvent<HTMLInputElement>, searchQuery ) => {
     if(event.key === 'Enter'){
-
-      axios.get('https://www.googleapis.com/books/v1/volumes?q='+searchQuery)
-      .then((response) => {
-        const bookList = [];
-        for(var i=0; i < response.data.items.length; i++){
-          //let imageUrl = URL.createObjectURL(response.data.items[i].volumeInfo.previewLink);
-          const bookItem = {
-            id: response.data.items[i].id,
-            title: response.data.items[i].volumeInfo.title,
-            author: response.data.items[i].volumeInfo.authors,
-            description: response.data.items[i].volumeInfo.description,
-            img: response.data.items[i].volumeInfo.imageLinks.thumbnail
-          }
-          bookList.push(bookItem);
-        }
-        this.setState({myBooks: bookList});
-      })
-      .catch(function (error){
-        console.log(error);
-      })
-          //console.log(searchQuery);
+       fetch('https://www.googleapis.com/books/v1/volumes?q='+searchQuery)
+        .then(response => response.json())
+        .then((responsedata) => {
+            console.log(responsedata.items);
+            const bookList = [];
+            for(var i=0; i < responsedata.items.length; i++){
+              const bookItem = {
+                id: responsedata.items[i].id,
+                title: responsedata.items[i].volumeInfo.title,
+                author: responsedata.items[i].volumeInfo.authors,
+                description: responsedata.items[i].volumeInfo.description,
+                img: responsedata.items[i].volumeInfo.imageLinks.thumbnail
+              }
+              bookList.push(bookItem);
+            }
+            //console.log(bookList);
+            this.setState({myBooks: bookList});
+         }).catch(function (error){
+            console.log(error);
+            //console.log("fail");
+        });
     }
   }
   render (){

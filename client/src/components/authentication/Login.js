@@ -1,8 +1,8 @@
 import React, {Component}  from 'react';
-import classnames from "classnames";
-import PropTypes from "prop-types";
+//import classnames from "classnames";
+//import PropTypes from "prop-types";
 import axios from "axios";
-import setAuthToken from "../../actions/setAuthToken";
+//import setAuthToken from "../../actions/setAuthToken";
 import jwt_decode from "jwt-decode";
 
 class Login extends Component{
@@ -58,7 +58,7 @@ class Login extends Component{
     .catch(err => {
       //console.dir(err.response.data);
       this.state.errors = err.response.data;
-      const i =1;
+      //const i =1;
       Object.entries(this.state.errors).map((obj,i)=> {
         console.log(obj[1]);
         this.setState((state) => {
