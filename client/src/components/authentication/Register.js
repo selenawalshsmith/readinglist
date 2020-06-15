@@ -15,7 +15,7 @@ class Register extends Component{
       errors: {}
     };
   }
-  
+
   registerUser = (userData, history) => {
     axios
     .post("/api/users/register", userData)
@@ -27,7 +27,7 @@ class Register extends Component{
       this.state.errors = err.response.data;
       const i =1;
       Object.entries(this.state.errors).map((obj,i)=> {
-        console.log(obj[1]);
+        //console.log(obj[1]);
         this.setState((state) => {
           return{error: obj[1]}
         });

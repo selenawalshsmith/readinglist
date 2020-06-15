@@ -33,8 +33,17 @@ class Login extends Component{
     delete axios.defaults.headers.common["Authorization"];
   }
 };
-  setCurrentUser = (name, history) => {
-    history.push("/user/"+name);
+  setCurrentUser = (userEmail, history) => {
+    //this.state
+    //loginUser(this.state, decoded)
+    //history.push("/user/"+decoded.name);
+    //console.log(userEmail);
+    history.push({
+      //pathname: "/user/"+decoded.name,
+      pathname: "/",
+      state: { user: userEmail}
+    });
+
   }
   loginUser = (userData, history) => {
     axios
@@ -48,23 +57,27 @@ class Login extends Component{
       // Set token to Auth header
        this.setAuthToken(token);
        //Decode token to get user data
-     const decoded = jwt_decode(token);
+      const decoded = jwt_decode(token);
        //Set current user
-       //console.log(decoded.name);
-       this.setCurrentUser(decoded.name, history);
+       console.log(decoded);
+       //console.log(userData);
+       this.setCurrentUser(decoded.email, history);
       //dispatch(setCurrentUser(decoded));
       //history.push("/user");
     })
     .catch(err => {
       //console.dir(err.response.data);
-      this.state.errors = err.response.data;
+      console.log(err);
+      //this.state.errors = err.response.data;
       //const i =1;
+      /*
       Object.entries(this.state.errors).map((obj,i)=> {
         console.log(obj[1]);
         this.setState((state) => {
           return{error: obj[1]}
         });
       })
+      */
     }
    );
   };

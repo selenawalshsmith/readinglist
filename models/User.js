@@ -19,7 +19,7 @@ const UserSchema = new Schema({
     default: Date.now
   },
   bookList: {
-    type: [String]
+    type: [String], //how I will save users books in db.
   }
 });
 module.exports = User = mongoose.model("users", UserSchema);

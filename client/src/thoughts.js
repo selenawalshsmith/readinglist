@@ -223,3 +223,65 @@ onKeyDown={(e)=> this.props.performSearch(e, this.searchQuery)}
 <Link to={`/Book/${this.props.id}`}>
 
   <Route path='/Book/${this.props.id}' component={Book}/>
+  ///////////////////////////////
+  ////////////////////////////////
+  ////////////////////////////////
+  ///////////////////////////////
+  ////////////////////////////////
+  ////////////////////////////////
+  /*
+  axios
+    .post("/api/users/getBookList", {name: userName})
+    .then(res => {
+      console.log(res.data.success.booklist);
+      //jsonList = res.data.success.booklist;
+      this.setState({jsonBookList: res.data.success.booklist})
+    }).catch(err => {console.log(err);});
+    */
+  //console.log(jsonList);
+  //this.getBooks(jsonList);
+
+  //books will be added as json strings
+  //console.log(this.state.jsonBookList);
+
+  /*
+  getBookList(){
+    const userName = this.getUserName(this.props.location.pathname);
+    let jsonList = {};
+    axios
+      .post("/api/users/getBookList", {name: userName})
+      .then(res => {
+        console.log(res.data.success.booklist);
+        //jsonList = res.data.success.booklist;
+        this.setState({jsonBookList: res.data.success.booklist})
+      }).catch(err => {console.log(err);});
+    return jsonList;
+ }
+ */
+
+
+
+
+
+ let book1 = {
+   id: "We21AwAAQBAJ",
+   title: "Principles and Practice Using C++",
+   author: "Bjarne Stroustrup",
+   description: "An Introduction to Programming by the Inventor of C++ Preparation for Programming in the Real World The book assumes that you aim eventually to write non-trivial programs, whether for work in software development or in some other technical field ...",
+   img: "http://books.google.com/books/content?id=We21AwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+ };
+ let book2 = {
+   id: "yQRErgEACAAJ",
+   title: "Grokking Algorithms",
+   description: "Summary Grokking Algorithms is a fully illustrated, friendly guide that teaches you how to apply common algorithms to the practical problems you face every day as a programmer. You'll start with sorting and searching and, as you build up your ...",
+   img: "http://books.google.com/books/content?id=We21AwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+ };
+ let book3 = {
+   id: "PXa2bby0oQ0C",
+   title: "JavaScript: The Good Parts",
+   description: "Most programming languages contain good and bad parts, but JavaScript has more than its share of the bad, having been developed and released in a hurry before it could be refined. This authoritative book scrapes away these bad features to reveal ...",
+   img: "http://books.google.com/books/content?id=PXa2bby0oQ0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+ };
+ book1 = JSON.stringify(book1);
+ book2 = JSON.stringify(book2);
+ book3 = JSON.stringify(book3);

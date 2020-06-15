@@ -1,7 +1,7 @@
 import React, {Component}  from 'react';
 import { Link } from 'react-router-dom'; //add links for pages
 import BookCard from "./grid/BookCard";
-import Home from "./Home";
+import Explore from "./Explore";
 import axios from 'axios';
 
 //console.log(Bookcard.props);

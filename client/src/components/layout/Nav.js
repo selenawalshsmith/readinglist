@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 //import { Link } from 'react-router-dom'; //add links for pages
-
+/*
+<Link to={{pathname:"/explore", state:{user: this.state.user}}}><button>Explore</button></Link>
+<Link to={{pathname:"/explore", state:{user: this.state.user}}}><button>Explore</button></Link>
+*/
 
 function Nav(){
   return (
@@ -12,6 +15,8 @@ function Nav(){
         </Link>
         <Link to='/register'><button style={buttonStyle}>Register</button></Link>
         <Link to='/login'><button style={buttonStyle}>Login</button></Link>
+        <Link to="/explore"><button>Explore</button></Link>
+        <Link to="/"><button>Home</button></Link>
       </header>
     </div>
   )
