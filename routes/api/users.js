@@ -123,7 +123,7 @@ const email = req.body.email;
 });
 //add the book as a json string..
 router.post("/addBook", (req, res) => {
-  User.findOne({ name: req.body.name }).then(user => {
+  User.findOne({ email: req.body.email }).then(user => {
       if (!user) {
         return res.status(400);
       } else {

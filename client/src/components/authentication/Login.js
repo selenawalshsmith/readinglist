@@ -38,12 +38,12 @@ class Login extends Component{
     //loginUser(this.state, decoded)
     //history.push("/user/"+decoded.name);
     //console.log(userEmail);
+
     history.push({
       //pathname: "/user/"+decoded.name,
       pathname: "/",
       state: { user: userEmail}
     });
-
   }
   loginUser = (userData, history) => {
     axios
@@ -68,6 +68,7 @@ class Login extends Component{
     .catch(err => {
       //console.dir(err.response.data);
       console.log(err);
+      this.setState({error: "Wrong Email. Please try again."})
       //this.state.errors = err.response.data;
       //const i =1;
       /*

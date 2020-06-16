@@ -4,13 +4,16 @@ import BookGrid from "./grid/BookGrid";
 import BookCard from "./grid/BookCard";
 import Search from './Search';
 
+import jwt_decode from "jwt-decode";
+
 class Explore extends Component{
   constructor(props) {
     super(props);
     this.state = {
       //user: this.props.location.state.user,
       myBooks: [],
-      searchQuery: "empty"
+      searchQuery: "empty",
+      addBook: true
     }
   }
   getInitialBookList = () => {
@@ -38,10 +41,33 @@ class Explore extends Component{
  };
  componentDidMount(){
     this.getInitialBookList();
-    //console.log(this.props.location.state.user);
-    //this.setState({user: this.props.user});
+    if (localStorage.jwtToken) {
+      const token = localStorage.jwtToken;
+      const decoded = jwt_decode(token);
+      this.setState({user: decoded.email});
+    } else {
+      this.props.history.push("/login");
+    }
   }
-
+  saveBook = (bookID) => {
+    console.log(bookID)
+    this.state.myBooks.map((book)=>{
+      if(book.id == bookID){
+        console.log("success");
+        const jsonBook= JSON.stringify(book);
+        axios.post("/api/users/addBook", {email: this.state.user, book: jsonBook})
+        .then((response) => {
+          console.log(response);
+        }).catch(err => {console.log(err);});
+      }
+    })
+    /*
+    axios.post("/api/users/addBook", {email: this.state.user, book: bookID})
+    .then((response) => {
+      console.log(response);
+    }).catch(err => {console.log(err);});
+    */
+  }
   //document.getElementbyId
   performSearch = (event: KeyboardEvent<HTMLInputElement>, searchQuery ) => {
     if(event.key === 'Enter'){
@@ -73,10 +99,11 @@ class Explore extends Component{
       <div className="container">
         <Search performSearch={this.performSearch} searchQuery={this.state.searchQuery}/>
         <h1> Hello {this.state.user}</h1>
+        <h2>Search for books</h2>
         <BookGrid cols={3}>
         {
           this.state.myBooks.map((bookItem, i) => (
-            <BookCard title={bookItem.title} id={bookItem.id} author={bookItem.author} img={bookItem.img} description={bookItem.description} key={i}/>
+            <BookCard saveBook={this.saveBook} title={bookItem.title} id={bookItem.id} author={bookItem.author} img={bookItem.img} description={bookItem.description} key={i} addBook={this.state.addBook}/>
           ))}
         </BookGrid>
       </div>

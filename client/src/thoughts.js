@@ -285,3 +285,19 @@ onKeyDown={(e)=> this.props.performSearch(e, this.searchQuery)}
  book1 = JSON.stringify(book1);
  book2 = JSON.stringify(book2);
  book3 = JSON.stringify(book3);
+
+
+
+
+
+
+
+ ////////////////////////////
+ ///////////////////////////
+
+
+ <Route path="/" exact component={UserHome} user={this.user}/>
+ <Route path="/explore" exact component={Explore} user={this.user}/>
+ <Route path="/register" exact component={Register}/>
+ <Route path="/login" exact component={Login}/>
+ <Route path="/book" component={Book} user={this.user}/>

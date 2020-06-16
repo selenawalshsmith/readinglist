@@ -1,10 +1,19 @@
 import React, {Component} from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Link } from 'react-router-dom';
+import ShowAddBook from './ShowAddBook'
 import './card.css';
 
 
 class Bookcard extends Component {
+  constructor(props) {
+    super(props);
+    //this.onClick = this.onClick.bind(this);
+  }
+  saveBook=(id)=>{
+    this.props.saveBook(this.props.id);
+
+  }
   render() {
       //const {id, title, author, img} = this.props.myBooks;
       return(
@@ -25,11 +34,19 @@ class Bookcard extends Component {
             </Grid>
           </div>
           <div className="saveButtonContainer">
-            <button className="saveButton"><p>Add to list</p></button>
+            <ShowAddBook saveBook={this.saveBook} addBook={this.props.addBook} />
             <Link to={`/book/${this.props.id}`}>
               <button className="saveButton"><p>Description</p></button>
             </Link>
           </div>
+          {/*
+          <div className="saveButtonContainer">
+            <button className="saveButton" onClick={this.saveBook} ><p>Add to list</p></button>
+            <Link to={`/book/${this.props.id}`}>
+              <button className="saveButton"><p>Description</p></button>
+            </Link>
+          </div>
+          */}
         </div>
       )
   }

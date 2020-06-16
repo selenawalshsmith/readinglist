@@ -42,36 +42,17 @@ const getUser = () => {
   }
 }
 class App extends Component {
-  //const user = getUser();
-  //user = getUser();
-  constructor(props) {
-    super(props);
-    /*
-    this.state = {
-      user: ""
-    }
-    */
-    //this.setState({user: function(){getUser();}});
-  };
-
-  componentDidMount(){
-    const user = getUser();
-    console.log(user);
-    this.setState({user: user.email});
-  }
-
   render(){
-    //console.log(this.state.user);
     return (
       <Router>
         <div className="App">
           <Nav/>
           <Switch>
-          <Route path="/" exact render={(props)=><UserHome user={this.user}/>}/>
-          <Route path="/explore" exact render={(props)=><Explore user={this.user}/>}/>
+          <Route path="/" exact component={UserHome}/>
+          <Route path="/explore" exact component={Explore}/>
           <Route path="/register" exact component={Register}/>
           <Route path="/login" exact component={Login}/>
-          <Route path="/book" component={Book} user={this.user}/>
+          <Route path="/book" component={Book}/>
           </Switch>
         </div>
       </Router>
