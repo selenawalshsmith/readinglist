@@ -1,5 +1,7 @@
 import React, {Component}  from 'react';
 //import UserHome from "./UserHome";
+//this function component is the button to add a book to the book list
+//this function only adds the add book button to the book card in /explore
 
 function ShowAddBooks(props){
   const addBook = props.addBook;

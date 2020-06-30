@@ -69,7 +69,7 @@ componentDidMount(){
       <h1>Book Page</h1>
       <h1>{book.title}</h1>
       <h1>{book.publisher}</h1>
-      <h1>{book.description}</h1>
+      <h3>{book.description}</h3>
       </div>
     )
   }

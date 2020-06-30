@@ -33,12 +33,10 @@ class Bookcard extends Component {
               </Row>
             </Grid>
           </div>
-          <div className="saveButtonContainer">
             <ShowAddBook saveBook={this.saveBook} addBook={this.props.addBook} />
             <Link to={`/book/${this.props.id}`}>
               <button className="saveButton"><p>Description</p></button>
             </Link>
-          </div>
           {/*
           <div className="saveButtonContainer">
             <button className="saveButton" onClick={this.saveBook} ><p>Add to list</p></button>

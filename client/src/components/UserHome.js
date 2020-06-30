@@ -27,7 +27,7 @@ class UserHome extends Component{
       user: this.props.user,
       isLoading: true,
       myBooks: [],
-      redirect: null,
+      //redirect: null,
       addBook: false
     }
   }
@@ -71,14 +71,15 @@ class UserHome extends Component{
       this.loadBooks(decoded.email);
     } else {
       //if there's no token redirect to user
-      this.setState({redirect: "/login"});
+      //this.setState({redirect: "/login"});
+      window.location.href = "./login";
     }
   }
 
   render (){
     return (
       <div>
-        <div><Redirect to={this.state.redirect}/></div>
+        {/*<div><Redirect to={this.state.redirect}/></div>*/}
         {/*<div>Hello {this.state.user}</div>*/}
         <div>My List</div>
         <div>

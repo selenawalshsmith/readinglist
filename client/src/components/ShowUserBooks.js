@@ -13,6 +13,9 @@ function ShowUserBooks(props){
             ))}
             </BookGrid>
   }
-  return <h2>Loading books...</h2>
+  return <div>
+        <h2>Loading books...</h2>
+         <h4>Please refresh if nothing happens</h4>
+         </div>
 }
 export default ShowUserBooks;

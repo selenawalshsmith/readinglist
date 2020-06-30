@@ -3,6 +3,7 @@ import React, {Component}  from 'react';
 import PropTypes from "prop-types";
 import axios from "axios";
 import classnames from "classnames";
+import "../../App.css";
 
 class Register extends Component{
   constructor() {
@@ -56,6 +57,7 @@ class Register extends Component{
   render(){
     return (
       <div>
+      <div className="AuthContainer">
       <div>
         <h3>Register</h3>
       </div>
@@ -83,8 +85,9 @@ class Register extends Component{
           <div>
           <input placeholder="confirm password" id="password2" onChange={this.onChange}></input>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn">Submit</button>
         </form>
+        </div>
       </div>
     )
   }
