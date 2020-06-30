@@ -1,6 +1,9 @@
 import React, {Component}  from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import setAuthToken from "../../actions/setAuthToken";
+import { useHistory } from 'react-router-dom';
+import LogoutUser from '../LogoutUser.js'
+import "../../App.css";
 //import { Link } from 'react-router-dom'; //add links for pages
 /*
 <Link to={{pathname:"/explore", state:{user: this.state.user}}}><button>Explore</button></Link>
@@ -9,36 +12,41 @@ import setAuthToken from "../../actions/setAuthToken";
 class Nav extends Component{
   constructor(props) {
     super(props);
-    this.state= {
-      redirect: ""
-    }
+    //this.state= {
+    //  redirect: null
+    //}
   }
-  logout(){
-    /*
-    console.log("hellow");
-    if (localStorage.jwtToken) {
-      localStorage.removeItem("jwtToken");
-      setAuthToken(false);
-      this.setState({redirect: "/login"});
-    } else {
-      console.log("hellow");
-      return;
-    }
-    */
-  }
+
+
   render(){
     return (
       <div>
         <header style={headerStyle}>
-          <Link to='/'>
-            <h1>Reading List</h1>
-          </Link>
-          <Link to='/register'><button style={buttonStyle}>Register</button></Link>
-          <Link to='/login'><button style={buttonStyle}>Login</button></Link>
-          <button onClick={this.logout} style={buttonStyle}>Logout</button>
-          <Link to="/explore"><button>Explore</button></Link>
-          <Link to="/"><button>Home</button></Link>
-          <div><Redirect to={this.state.redirect}/></div>
+          <div className="NavItemContainer">
+          <ul>
+            <li>
+              <Link to='/'>
+                <h1>Reading List</h1>
+              </Link>
+            </li>
+
+            <li>
+            <Link to='/register'><a className="NavItem">Register</a></Link>
+            </li>
+            <li>
+            <Link to='/login'><a className="NavItem">Login</a></Link>
+            </li>
+            <li>
+            <LogoutUser/>
+            </li>
+            <li>
+            <Link to="/explore"><a className="NavItem">Explore</a></Link>
+            </li>
+            <li>
+            <Link to="/"><a className="NavItem">Home</a></Link>
+            </li>
+          </ul>
+          </div>
         </header>
       </div>
     )
@@ -46,7 +54,7 @@ class Nav extends Component{
 }
 const headerStyle ={
   background: "#C6E4EE",
-  color: '#152238',
+  color: '#C6E4EE',
   textAlign: 'left',
   padding: '10px',
   fontSize: '25px',

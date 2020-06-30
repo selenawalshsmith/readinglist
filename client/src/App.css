@@ -23,19 +23,44 @@ a {
   padding: 0 1rem;
 }
 */
-
-
+.AuthContainer {
+  margin:50px;
+  padding: 10px;
+  background: #C6E4EE;
+  width: 450px;
+}
+.NavItem {
+  color: #152238;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: center;
+  font-size: 25px;
+}
+.NavItemContainer {
+  display: inline;
+}
+.NavItem:hover {
+  cursor:pointer;
+}
 .btn {
   display: inline-block;
-  border: none;
-  background: #555;
-  color: #fff;
-  padding: 7px 20px;
+  margin-bottom: 0;
+  margin:5px;
+  text-align: center;
+  vertical-align: middle;
   cursor: pointer;
+  background: #152238;
+  color: #C6E4EE;
+  padding: 6px 12px;
+  font-size: 15px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  user-select: none;
 }
 
 .btn:hover {
-  background: #666;
+  cursor:pointer;
 }
 
 

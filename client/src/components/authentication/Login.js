@@ -1,9 +1,11 @@
 import React, {Component}  from 'react';
 //import classnames from "classnames";
 //import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 import axios from "axios";
 //import setAuthToken from "../../actions/setAuthToken";
 import jwt_decode from "jwt-decode";
+import "../../App.css";
 
 class Login extends Component{
   constructor() {
@@ -96,9 +98,10 @@ class Login extends Component{
   render(){
     return(
       <div>
-      <div>
-        <h3>Login</h3>
-      </div>
+      <div className="AuthContainer">
+        <div>
+          <h3>Login</h3>
+        </div>
         <div>
           <h3>{this.state.error}</h3>
         </div>
@@ -111,10 +114,19 @@ class Login extends Component{
           ></input>
           </div>
           <div>
-          <input placeholder="password" id="password" onChange={this.onChange}></input>
+            <input placeholder="password" id="password" onChange={this.onChange}></input>
           </div>
-          <button type="submit">Submit</button>
-        </form>
+          <div>
+            <button type="submit" className="btn">Submit</button>
+          </div>
+          </form>
+          <div>
+            <h4>Need an account?</h4>
+            <div>
+            <Link to="./register"><button className="btn"><h4>Register</h4></button></Link>
+            </div>
+          </div>
+          </div>
       </div>
     )
   }
