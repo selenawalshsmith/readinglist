@@ -6,6 +6,7 @@ const passport = require("passport");
 const users = require("./routes/api/users");
 
 const cors = require('cors');
+const path = require('path');
 const app = express();
 // Bodyparser middleware
 app.use(
@@ -58,6 +59,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 */
+
 app.use(express.static(path.join(__dirname, './client/public')))
 
 app.get('*', function(_, res) {
